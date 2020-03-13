@@ -13,6 +13,10 @@ call plug#begin('~/.vim/plugged')
 call plug#end()
 
 syntax on
+set autoread
+set autoindent
+set backspace=indent,eol,start
+set encoding=utf-8
 set wrap
 set number
 set showmatch
@@ -21,7 +25,8 @@ set incsearch
 set ignorecase
 set tabstop=4
 set shiftwidth=4
-set autoindent
+set smartcase
+set smartindent
 set smarttab
 set visualbell
 set noswapfile
