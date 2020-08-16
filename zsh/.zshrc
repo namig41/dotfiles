@@ -71,7 +71,13 @@ ZSH_THEME="arrow/arrow"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git zsh-autosuggestions zsh-syntax-highlighting alias-finder autojump vi-mode
+    git
+	zsh-autosuggestions
+	zsh-syntax-highlighting
+	alias-finder
+	autojump
+	vi-mode
+	vscode
 )
 
 # User configuration
