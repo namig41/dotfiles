@@ -9,6 +9,15 @@ export TERM="xterm-256color"
 # load a random theme each time oh-my-zsh is loaded, in which case, # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
+# ZSH_THEME="powerlevel9k/powerlevel9k"
+# 
+# POWERLEVEL9K_MODE="nerdfont-complete"
+# POWERLEVEL9K_DISABLE_RPRMOPT=true
+# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="➤ "
+# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
+
+#ZSH_THEME="typewritten/typewritten"
 ZSH_THEME="arrow/arrow"
 
 # Set list of themes to pick from when loading at random
@@ -62,8 +71,10 @@ ZSH_THEME="arrow/arrow"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git zsh-autosuggestions zsh-syntax-highlighting
+    git zsh-autosuggestions zsh-syntax-highlighting alias-finder autojump vi-mode
 )
+
+# User configuration
 
 source $ZSH/oh-my-zsh.sh
 
@@ -71,7 +82,18 @@ LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35"
 
 alias reader="xdg-open "
 
-# User configuration
+screenfetch
+
+function zle-line-init zle-keymap-select {
+   VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
+   RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
+   zle reset-prompt
+}
+
+zle -N zle-line-init
+zle -N zle-keymap-select
+
+export KEYTIMEOUT=1
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -96,3 +118,10 @@ alias reader="xdg-open "
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+alias mr="make re"
+alias mcl="make clean"
+alias mc="make re && make clean"
+alias mf="make fclean"
+
+export LANG=en_US.utf8
