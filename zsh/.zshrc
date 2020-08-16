@@ -2,27 +2,19 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/namig/.oh-my-zsh"
+export ZSH="/Users/lcarmelo/.oh-my-zsh"
 export TERM="xterm-256color"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case, # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-# 
-# POWERLEVEL9K_MODE="nerdfont-complete"
-# POWERLEVEL9K_DISABLE_RPRMOPT=true
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="➤ "
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-
-#ZSH_THEME="typewritten/typewritten"
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="arrow/arrow"
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -37,7 +29,15 @@ ZSH_THEME="arrow/arrow"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days).  # export UPDATE_ZSH_DAYS=13 # Uncomment the following line if pasting URLs and other text is messed up.  # DISABLE_MAGIC_FUNCTIONS=true # Uncomment the following line to disable colors in ls.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
@@ -66,10 +66,12 @@ ZSH_THEME="arrow/arrow"
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
+
 plugins=(
     git
 	zsh-autosuggestions
@@ -80,16 +82,10 @@ plugins=(
 	vscode
 )
 
-# User configuration
-
 source $ZSH/oh-my-zsh.sh
 
-LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35"  
-
-alias reader="xdg-open "
-
-screenfetch
-
+# User configuration
+#
 function zle-line-init zle-keymap-select {
    VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
@@ -122,12 +118,27 @@ export KEYTIMEOUT=1
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-# alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+
+code () { VSCODE_CWD="$PWD" open -n -b "com.microsoft.VSCode" --args $* ;}
+
+ch () { chmod +x $* ;}
+
+alias zshconfig="vim ~/.zshrc"
+alias zshreload="source ~/.zshrc"
 
 alias mr="make re"
 alias mcl="make clean"
-alias mc="make re && make clean"
 alias mf="make fclean"
+alias mc="make re && make clean"
+alias gmc='git commit -am "$(curl -s whatthecommit.com/index.txt)" && git push'
+alias rmf="rm -rf"
+alias -1="cd ../"
+alias norm='/Users/lcarmelo/.scripts/colorised_norm.sh'
 
-export LANG=en_US.utf8
+# Load Homebrew config script
+source $HOME/.brewconfig.zsh
+
+
+screenfetch
