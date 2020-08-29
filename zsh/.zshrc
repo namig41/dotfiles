@@ -70,6 +70,10 @@ ZSH_THEME="arrow/arrow"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
+#
+
+export FZF_BASE=/path/to/fzf/install/dir
+
 plugins=(
     git
 	zsh-autosuggestions
@@ -78,6 +82,7 @@ plugins=(
 	autojump
 	vi-mode
 	vscode
+	fzf
 )
 
 # User configuration
@@ -92,7 +97,7 @@ clear
 screenfetch
 
 function zle-line-init zle-keymap-select {
-   VIM_PROMPT="%{$fg_bold[magenta]%} [% NORMAL]%  %{$reset_color%}"
+   VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
    RPS1="${${KEYMAP/vicmd/$VIM_PROMPT}/(main|viins)/} $EPS1"
    zle reset-prompt
 }
@@ -139,3 +144,5 @@ alias -1="cd ../"
 
 export LANG=en_US.utf8
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

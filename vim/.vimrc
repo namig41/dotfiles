@@ -1,20 +1,26 @@
 call plug#begin('~/.vim/plugged')
-    Plug 'flrnd/candid.vim' 
 	Plug 'dracula/vim', { 'as': 'dracula' }
-	Plug 'arzg/vim-substrata'
+	Plug 'arcticicestudio/nord-vim'
 	Plug 'cocopon/iceberg.vim'
-    Plug 'vim-scripts/vim-auto-save'
-    Plug 'fwincent/terminus'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'terryma/vim-multiple-cursors'
-    Plug 'matze/vim-move'
+	Plug 'vim-scripts/vim-auto-save'
+	Plug 'wincent/terminus'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'matze/vim-move'
 	Plug 'mkitt/tabline.vim'
 	Plug 'itchyny/vim-cursorword'
 	Plug 'preservim/nerdtree'
+	Plug 'cocopon/iceberg.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'ryanoasis/vim-devicons'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	Plug 'kshenoy/vim-signature'
 call plug#end()
 
 syntax on
-set background=dark
+set bg=dark
 set termguicolors
 set autoread
 set autoindent
@@ -35,7 +41,7 @@ set visualbell
 set noswapfile
 set ruler
 
-colorscheme dracula
+colorscheme nord
 
 function! InsertTabWrapper(direction)
 let col = col('.') - 1
@@ -50,13 +56,15 @@ endfunction
 
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
+
 imap jk <Esc>
 
-nmap T :NERDTree<CR>
+map T :NERDTree<CR>
+map t :FZF<CR>
 
 let g:auto_save = 1
 let g:multi_cursor_quit_key = '<f><f>'
-let g:move_key_modifier = 'C'
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
+let g:move_key_modifier = 'C'
