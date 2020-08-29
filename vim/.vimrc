@@ -1,18 +1,21 @@
 call plug#begin('~/.vim/plugged')
-    Plug 'dracula/vim', { 'as': 'dracula' } 
     Plug 'flrnd/candid.vim' 
+	Plug 'dracula/vim', { 'as': 'dracula' }
+	Plug 'arzg/vim-substrata'
+	Plug 'cocopon/iceberg.vim'
     Plug 'vim-scripts/vim-auto-save'
-    Plug 'arzg/vim-substrata'
-    Plug 'wincent/terminus'
-    Plug 'cocopon/iceberg.vim'
-    Plug 'romainl/Apprentice'
+    Plug 'fwincent/terminus'
     Plug 'jiangmiao/auto-pairs'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'matze/vim-move'
 	Plug 'mkitt/tabline.vim'
+	Plug 'itchyny/vim-cursorword'
+	Plug 'preservim/nerdtree'
 call plug#end()
 
 syntax on
+set background=dark
+set termguicolors
 set autoread
 set autoindent
 set backspace=indent,eol,start
@@ -32,7 +35,7 @@ set visualbell
 set noswapfile
 set ruler
 
-colorscheme iceberg 
+colorscheme dracula
 
 function! InsertTabWrapper(direction)
 let col = col('.') - 1
@@ -44,19 +47,16 @@ else
     return "\<c-n>"
 endif
 endfunction
+
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
+imap jk <Esc>
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-imap ff <Esc>
+nmap T :NERDTree<CR>
 
 let g:auto_save = 1
-autocmd InsertEnter,InsertLeave * set cul!
-
 let g:multi_cursor_quit_key = '<f><f>'
 let g:move_key_modifier = 'C'
 
+autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
+autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
