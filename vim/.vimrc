@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'vim-scripts/vim-auto-save'
 	Plug 'wincent/terminus'
 	Plug 'jiangmiao/auto-pairs'
-	Plug 'terryma/vim-multiple-cursors'
 	Plug 'matze/vim-move'
 	Plug 'mkitt/tabline.vim'
 	Plug 'itchyny/vim-cursorword'
@@ -58,13 +57,18 @@ inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 
 imap jk <Esc>
+vmap jk <Esc>
 
-map T :NERDTree<CR>
-map t :FZF<CR>
+nmap T :NERDTree<CR>
+nmap t :FZF<CR>
+
+nmap K gt
+nmap J gT
+
 
 let g:auto_save = 1
-let g:multi_cursor_quit_key = '<f><f>'
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
+
 let g:move_key_modifier = 'C'
