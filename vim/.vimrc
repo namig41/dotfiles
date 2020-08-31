@@ -20,7 +20,6 @@ call plug#end()
 
 syntax on
 set bg=dark
-set termguicolors
 set autoread
 set autoindent
 set backspace=indent,eol,start
@@ -61,6 +60,8 @@ vmap jk <Esc>
 
 nmap T :NERDTree<CR>
 nmap t :FZF<CR>
+nmap <c-f> :Files<CR>
+nmap <c-p> :Ag<CR>
 
 nmap K gt
 nmap J gT
@@ -72,3 +73,9 @@ autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
 
 let g:move_key_modifier = 'C'
+
+if exists('+termguicolors')
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+endif
