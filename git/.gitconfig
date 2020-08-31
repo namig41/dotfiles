@@ -1,17 +1,17 @@
 [user]
-	name = namig41
-	email = guseinovnamig41@gmail.com
+	name 			= namig41
+	email 			= guseinovnamig41@gmail.com
 
 [credential]
-	helper = cache --timeout=3600
+	helper 			= cache --timeout=3600
 
 [color]
-	ui = true
-	diff = auto
-	status = auto
-	branch = auto
-	interactive = auto
-	pager = true
+	ui 				= true
+	diff 			= auto
+	status 			= auto
+	branch 			= auto
+	interactive 	= auto
+	pager 			= true
 
 [url "git@github.com:"]
 	insteadof       = "gh:"
@@ -19,4 +19,5 @@
 	pushinsteadof   = "git://github.com/"
 
 [core]
+	editor 			= vim
 	excludesfile    = ~/.gitignore_global
