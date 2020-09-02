@@ -16,6 +16,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	Plug 'kshenoy/vim-signature'
+	Plug 'ekalinin/Dockerfile.vim'
+	Plug 'tpope/vim-surround'
+	Plug 'easymotion/vim-easymotion'
 call plug#end()
 
 syntax on
@@ -66,8 +69,14 @@ nmap <c-p> :Ag<CR>
 nmap K gt
 nmap J gT
 
-
 let g:auto_save = 1
+
+map <Leader> <Plug>(easymotion-prefix)
+
+map  / <Plug>(easymotion-sn)
+omap / <Plug>(easymotion-tn)
+map  n <Plug>(easymotion-next)
+map  N <Plug>(easymotion-prev)
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 

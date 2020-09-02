@@ -17,7 +17,6 @@ export TERM="xterm-256color"
 # POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="➤ "
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 
-#ZSH_THEME="typewritten/typewritten"
 ZSH_THEME="arrow/arrow"
 
 # Set list of themes to pick from when loading at random
@@ -37,7 +36,8 @@ ZSH_THEME="arrow/arrow"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days).  # export UPDATE_ZSH_DAYS=13 # Uncomment the following line if pasting URLs and other text is messed up.  # DISABLE_MAGIC_FUNCTIONS=true # Uncomment the following line to disable colors in ls.
+# DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days). 
+# # export UPDATE_ZSH_DAYS=13 # Uncomment the following line if pasting URLs and other text is messed up.  # DISABLE_MAGIC_FUNCTIONS=true # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
@@ -83,6 +83,8 @@ plugins=(
 	vi-mode
 	vscode
 	fzf
+	docker
+	docker-compose
 )
 
 # User configuration
@@ -91,10 +93,6 @@ source $ZSH/oh-my-zsh.sh
 
 LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35"  
 
-alias reader="xdg-open "
-
-clear
-screenfetch
 
 function zle-line-init zle-keymap-select {
    VIM_PROMPT="%{$fg_bold[green]%} [% NORMAL]%  %{$reset_color%}"
@@ -134,15 +132,19 @@ alias zshreload="source ~/.zshrc"
 
 alias vimconfig="vim ~/.vimrc"
 
+alias m="make > /dev/null 2>&1 &"
 alias mr="make re"
 alias mcl="make clean"
-alias mc="make re && make clean"
 alias mf="make fclean"
+
 alias rmf="rm -rf"
 alias gmc='git commit -am "$(curl -s whatthecommit.com/index.txt)" && git push'
+
 alias -1="cd ../"
+alias -2="cd ../../"
+
+alias reader="xdg-open "
 
 export LANG=en_US.utf8
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
