@@ -41,6 +41,7 @@ set smarttab
 set visualbell
 set noswapfile
 set ruler
+set nohlsearch
 
 colorscheme nord
 
@@ -59,7 +60,7 @@ inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 
 imap jk <Esc>
-vmap jk <Esc>
+vmap aa <Esc>
 
 nmap T :NERDTree<CR>
 nmap t :FZF<CR>
@@ -70,6 +71,7 @@ nmap K gt
 nmap J gT
 
 let g:auto_save = 1
+let g:AutoPairsFlyMode = 1
 
 map <Leader> <Plug>(easymotion-prefix)
 
@@ -88,3 +90,4 @@ if exists('+termguicolors')
 	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 	set termguicolors
 endif
+
