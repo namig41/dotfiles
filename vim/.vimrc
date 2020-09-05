@@ -19,6 +19,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ekalinin/Dockerfile.vim'
 	Plug 'tpope/vim-surround'
 	Plug 'easymotion/vim-easymotion'
+	Plug 'szw/vim-tags'
+	Plug 'ycm-core/YouCompleteMe'
 call plug#end()
 
 syntax on
@@ -45,27 +47,17 @@ set nohlsearch
 
 colorscheme nord
 
-function! InsertTabWrapper(direction)
-let col = col('.') - 1
-if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-elseif "backward" == a:direction
-    return "\<c-p>"
-else
-    return "\<c-n>"
-endif
-endfunction
-
-inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
-
 imap jk <Esc>
 vmap aa <Esc>
 
 nmap T :NERDTree<CR>
 nmap t :FZF<CR>
-nmap <c-f> :Files<CR>
+nmap <c-g> :Files<CR>
 nmap <c-p> :Ag<CR>
+
+nmap z %
+
+nmap <Leader>r :TagsGenerate!<CR>
 
 nmap K gt
 nmap J gT
