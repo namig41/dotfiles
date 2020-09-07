@@ -95,8 +95,8 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-nmap <Leader>a $
-nmap <Leader>i 0
+map <Leader>a $
+map <Leader>i 0
 
 nmap H gb
 
