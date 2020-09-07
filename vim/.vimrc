@@ -19,6 +19,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'easymotion/vim-easymotion'
     Plug 'szw/vim-tags'
     Plug 'tpope/vim-commentary'
+	Plug 'jeetsukumaran/vim-buffergator'
 call plug#end()
 
 syntax on
@@ -42,6 +43,7 @@ set cindent
 set visualbell
 set noswapfile
 set ruler
+set nohlsearch
 
 colorscheme nord
 
@@ -59,6 +61,8 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 
+let g:mapleader=','
+
 imap jk <Esc>
 vmap aa <Esc>
 
@@ -66,8 +70,6 @@ nmap T :NERDTree<CR>
 nmap t :FZF<CR>
 nmap <c-g> :Files<CR>
 nmap <c-p> :Ag<CR>
-
-nmap z %
 
 nmap <Leader>r :TagsGenerate!<CR>
 
@@ -80,8 +82,9 @@ nmap <c-l> <c-w>l
 nmap <c-j> <c-d>
 nmap <c-k> <c-u>
 
+nmap <Leader>f :NERDTreeFind<CR>
+
 let g:auto_save = 1
-let g:AutoPairsFlyMode = 1
 
 map <Leader> <Plug>(easymotion-prefix)
 
@@ -90,8 +93,10 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
+nmap <Leader>a gb
+
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
+" autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
 
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
