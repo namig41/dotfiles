@@ -96,7 +96,7 @@ map  N <Plug>(easymotion-prev)
 nmap <Leader>a gb
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-" autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
+autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
 
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
