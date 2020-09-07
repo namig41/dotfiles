@@ -20,6 +20,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'szw/vim-tags'
     Plug 'tpope/vim-commentary'
 	Plug 'jeetsukumaran/vim-buffergator'
+	Plug 'justinmk/vim-sneak'
 call plug#end()
 
 syntax on
@@ -47,6 +48,10 @@ set nohlsearch
 
 colorscheme nord
 
+let g:mapleader=','
+let g:auto_save = 1
+let g:sneak#label = 1
+
 function! InsertTabWrapper(direction)
 let col = col('.') - 1
 if !col || getline('.')[col - 1] !~ '\k'
@@ -61,14 +66,12 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 
-let g:mapleader=','
-
 imap jk <Esc>
 vmap aa <Esc>
 
 nmap T :NERDTree<CR>
 nmap t :FZF<CR>
-nmap <c-g> :Files<CR>
+nmap <c-f> :Files<CR>
 nmap <c-p> :Ag<CR>
 
 nmap <Leader>r :TagsGenerate!<CR>
@@ -84,7 +87,6 @@ nmap <c-k> <c-u>
 
 nmap <Leader>f :NERDTreeFind<CR>
 
-let g:auto_save = 1
 
 map <Leader> <Plug>(easymotion-prefix)
 
@@ -93,7 +95,10 @@ omap / <Plug>(easymotion-tn)
 map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
-nmap <Leader>a gb
+nmap <Leader>a $
+nmap <Leader>i 0
+
+nmap H gb
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
