@@ -38,7 +38,7 @@ ZSH_THEME="arrow/arrow"
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days). 
 # # export UPDATE_ZSH_DAYS=13 # Uncomment the following line if pasting URLs and other text is messed up.  # DISABLE_MAGIC_FUNCTIONS=true # Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
+ DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -85,13 +85,14 @@ plugins=(
 	fzf
 	docker
 	docker-compose
+	systemd
 )
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
 
 
-LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35"  
+LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35:*.c=04;36"  
 
 
 function zle-line-init zle-keymap-select {
@@ -144,6 +145,8 @@ alias -1="cd ../"
 alias -2="cd ../../"
 
 alias reader="xdg-open "
+
+alias jp="jupyter notebook"
 
 export LANG=en_US.utf8
 
