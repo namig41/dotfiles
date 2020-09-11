@@ -68,6 +68,10 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 
+
+map f <Plug>Sneak_s
+map F <Plug>Sneak_S
+
 inoremap <C-v> <ESC>"+pa
 vnoremap <C-c> "+y
 vnoremap <C-d> "+d
@@ -93,7 +97,6 @@ map <c-k> <c-u>
 
 nmap <Leader>f :NERDTreeFind<CR>
 
-
 map <Leader> <Plug>(easymotion-prefix)
 
 map  / <Plug>(easymotion-sn)
@@ -103,6 +106,8 @@ map  N <Plug>(easymotion-prev)
 
 map <Leader>a $
 map <Leader>i 0
+
+map Q :wq<CR>
 
 nmap H gb
 
