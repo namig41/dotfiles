@@ -1,4 +1,5 @@
 call plug#begin('~/.vim/plugged')
+	Plug 'crusoexia/vim-monokai'
     Plug 'arcticicestudio/nord-vim'
     Plug 'cocopon/iceberg.vim'
     Plug 'vim-scripts/vim-auto-save'
@@ -45,6 +46,7 @@ set visualbell
 set noswapfile
 set ruler
 set nohlsearch
+set clipboard=unnamed
 
 colorscheme nord
 
@@ -66,6 +68,10 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
 inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
 
+inoremap <C-v> <ESC>"+pa
+vnoremap <C-c> "+y
+vnoremap <C-d> "+d
+
 imap jk <Esc>
 vmap aa <Esc>
 
@@ -82,8 +88,8 @@ nmap J gT
 nmap <c-h> <c-w>h
 nmap <c-l> <c-w>l
 
-nmap <c-j> <c-d>
-nmap <c-k> <c-u>
+map <c-j> <c-d>
+map <c-k> <c-u>
 
 nmap <Leader>f :NERDTreeFind<CR>
 
@@ -107,4 +113,6 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
     set termguicolors
+ 	set t_Co=256
 endif
+
