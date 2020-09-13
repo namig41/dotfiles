@@ -38,7 +38,7 @@ ZSH_THEME="arrow/arrow"
 # Uncomment the following line to automatically update without prompting.
 # DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days). 
 # # export UPDATE_ZSH_DAYS=13 # Uncomment the following line if pasting URLs and other text is messed up.  # DISABLE_MAGIC_FUNCTIONS=true # Uncomment the following line to disable colors in ls.
- DISABLE_LS_COLORS="true"
+#DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -128,10 +128,10 @@ export KEYTIMEOUT=1
 #
 ch () { chmod +x $* ;}
 
-alias zshconfig="vim ~/.zshrc"
-alias zshreload="source ~/.zshrc"
+alias zshc="vim ~/.zshrc"
+alias zshr="source ~/.zshrc"
 
-alias vimconfig="vim ~/.vimrc"
+alias vimc="vim ~/.vimrc"
 
 alias m="make > /dev/null 2>&1 &"
 alias mr="make re"
@@ -147,6 +147,9 @@ alias -2="cd ../../"
 alias reader="xdg-open "
 
 alias jp="jupyter notebook"
+
+alias v="valgrind"
+alias vf="valgrind --leak-check=full"
 
 export LANG=en_US.utf8
 
