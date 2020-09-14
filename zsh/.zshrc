@@ -18,6 +18,8 @@ export TERM="xterm-256color"
 # POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
 
 ZSH_THEME="arrow/arrow"
+ZSH_THEME_VIRTUALENV_PREFIX='('
+ZSH_THEME_VIRTUALENV_SUFFIX=')'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -86,6 +88,7 @@ plugins=(
 	docker
 	docker-compose
 	systemd
+	virtualenv
 )
 
 # User configuration
@@ -127,6 +130,7 @@ export KEYTIMEOUT=1
 # For a full list of active aliases, run `alias`.
 #
 ch () { chmod +x $* ;}
+qt () { qtcreator $* &;}
 
 alias zshc="vim ~/.zshrc"
 alias zshr="source ~/.zshrc"
