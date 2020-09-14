@@ -1,5 +1,4 @@
 call plug#begin('~/.vim/plugged')
-	Plug 'crusoexia/vim-monokai'
     Plug 'arcticicestudio/nord-vim'
     Plug 'cocopon/iceberg.vim'
     Plug 'vim-scripts/vim-auto-save'
@@ -104,9 +103,10 @@ map  n <Plug>(easymotion-next)
 map  N <Plug>(easymotion-prev)
 
 map <Leader>a $
-map <Leader>i 0
+map <Leader>i ^
 
 map Q :wq<CR>
+nmap <Leader>s :sh<CR>
 
 nmap H gb
 
