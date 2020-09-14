@@ -91,9 +91,11 @@ plugins=(
 	virtualenv
 )
 
+
 # User configuration
 source $ZSH/oh-my-zsh.sh
 
+bindkey '^ ' autosuggest-accept
 
 LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35:*.c=04;36"  
 
@@ -129,6 +131,7 @@ export KEYTIMEOUT=1
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
 #
+
 ch () { chmod +x $* ;}
 qt () { qtcreator $* &;}
 
