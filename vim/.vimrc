@@ -21,6 +21,10 @@ call plug#begin('~/.vim/plugged')
     Plug 'tpope/vim-commentary'
 	Plug 'jeetsukumaran/vim-buffergator'
 	Plug 'justinmk/vim-sneak'
+	Plug 'ervandew/supertab'
+	Plug 'SirVer/ultisnips'
+	Plug 'honza/vim-snippets'
+	Plug 'wellle/vim-repeat'
 call plug#end()
 
 syntax on
@@ -47,25 +51,16 @@ set ruler
 set nohlsearch
 set clipboard=unnamed
 
+syntax enable
 colorscheme nord
 
 let g:mapleader=','
 let g:auto_save = 1
 let g:sneak#label = 1
 
-function! InsertTabWrapper(direction)
-let col = col('.') - 1
-if !col || getline('.')[col - 1] !~ '\k'
-    return "\<tab>"
-elseif "backward" == a:direction
-    return "\<c-p>"
-else
-    return "\<c-n>"
-endif
-endfunction
-
-inoremap <tab> <c-r>=InsertTabWrapper ("forward")<cr>
-inoremap <s-tab> <c-r>=InsertTabWrapper ("backward")<cr> 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-w>"
+let g:UltiSnipsEditSplit="vertical"
 
 map f <Plug>Sneak_s
 map F <Plug>Sneak_S
@@ -106,12 +101,13 @@ map <Leader>a $
 map <Leader>i ^
 
 map Q :wq<CR>
+map <Leader>q :q!<CR>
 nmap <Leader>s :sh<CR>
 
 nmap H gb
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-autocmd VimLeave * silent exec "! echo -ne '\e[3 q'" 
+autocmd VimLeave * silent exec "! echo -ne '\e[1 q'" 
 
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
