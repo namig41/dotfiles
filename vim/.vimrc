@@ -25,10 +25,9 @@ call plug#begin('~/.vim/plugged')
 	Plug 'SirVer/ultisnips'
 	Plug 'honza/vim-snippets'
 	Plug 'wellle/vim-repeat'
+	Plug 'romainl/vim-cool'
 call plug#end()
 
-syntax on
-set bg=dark
 set autoread
 set autoindent
 set backspace=indent,eol,start
@@ -48,10 +47,10 @@ set cindent
 set visualbell
 set noswapfile
 set ruler
-set nohlsearch
 set clipboard=unnamed
 
 syntax enable
+set bg=dark
 colorscheme nord
 
 let g:mapleader=','

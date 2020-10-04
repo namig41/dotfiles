@@ -89,8 +89,8 @@ plugins=(
 	docker-compose
 	systemd
 	virtualenv
+	pip
 )
-
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
@@ -110,6 +110,18 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 
 export KEYTIMEOUT=1
+
+# pip zsh completion start
+function _pip_completion {
+  local words cword
+  read -Ac words
+  read -cn cword
+  reply=( $( COMP_WORDS="$words[*]" \
+             COMP_CWORD=$(( cword-1 )) \
+             PIP_AUTO_COMPLETE=1 $words[1] 2>/dev/null ))
+}
+compctl -K _pip_completion pip3
+# pip zsh completion end
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -132,8 +144,10 @@ export KEYTIMEOUT=1
 # For a full list of active aliases, run `alias`.
 #
 
-ch () { chmod +x $* ;}
+ch () { chmod +x $*;}
 qt () { qtcreator $* &;}
+n () { nautilus $* > /dev/null 2>&1 &;}
+
 
 alias zshc="vim ~/.zshrc"
 alias zshr="source ~/.zshrc"
@@ -146,14 +160,17 @@ alias mcl="make clean"
 alias mf="make fclean"
 
 alias rmf="rm -rf"
+
+alias gwt='git commit -am "$(curl -s whatthecommit.com/index.txt)"'
 alias gmc='git commit -am "$(curl -s whatthecommit.com/index.txt)" && git push'
 
 alias -1="cd ../"
 alias -2="cd ../../"
 
-alias reader="xdg-open "
+alias open="xdg-open "
 
 alias jp="jupyter notebook"
+alias google="google-chrome > /dev/null 2>&1 &"
 
 alias v="valgrind"
 alias vf="valgrind --leak-check=full"
