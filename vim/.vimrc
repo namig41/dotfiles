@@ -1,6 +1,5 @@
 call plug#begin('~/.vim/plugged')
     Plug 'arcticicestudio/nord-vim'
-    Plug 'cocopon/iceberg.vim'
     Plug 'vim-scripts/vim-auto-save'
     Plug 'wincent/terminus'
     Plug 'jiangmiao/auto-pairs'
@@ -22,8 +21,6 @@ call plug#begin('~/.vim/plugged')
 	Plug 'jeetsukumaran/vim-buffergator'
 	Plug 'justinmk/vim-sneak'
 	Plug 'ervandew/supertab'
-	Plug 'SirVer/ultisnips'
-	Plug 'honza/vim-snippets'
 	Plug 'wellle/vim-repeat'
 	Plug 'romainl/vim-cool'
 call plug#end()
