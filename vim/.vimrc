@@ -23,6 +23,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'ervandew/supertab'
 	Plug 'wellle/vim-repeat'
 	Plug 'romainl/vim-cool'
+	Plug 'vim-scripts/ruscmd'
 call plug#end()
 
 set autoread
@@ -98,7 +99,6 @@ map <Leader>i ^
 
 map Q :wq<CR>
 map <Leader>q :q!<CR>
-nmap <Leader>s :sh<CR>
 
 nmap H gb
 
@@ -111,4 +111,3 @@ if exists('+termguicolors')
     set termguicolors
  	set t_Co=256
 endif
-
