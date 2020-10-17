@@ -57,20 +57,21 @@ nnoremap <silent> <Leader>O O<Esc>j
 
 call plug#begin('~/.local/share/nvim/plugged')
 
-	"Navigation Plugins
+	" Navigation Plugins
 
 	Plug 'kshenoy/vim-signature'
 	Plug 'jeetsukumaran/vim-buffergator'
+	Plug 'vim-scripts/ruscmd'
 	
 	Plug 'preservim/nerdtree'
 	nmap <silent> T :NERDTree<CR>
 	nmap <silent> <Leader>f :NERDTreeFind<CR>
 
 	Plug 'easymotion/vim-easymotion'
-	map  / <Plug>(easymotion-sn)zz
-	omap / <Plug>(easymotion-tn)zz
-	map  n <Plug>(easymotion-next)zz
-	map  N <Plug>(easymotion-prev)zz
+	map  / <Plug>(easymotion-sn)
+	omap / <Plug>(easymotion-tn)
+	map  n <Plug>(easymotion-next)
+	map  N <Plug>(easymotion-prev)
 	map <Leader> <Plug>(easymotion-prefix)
 
 	Plug 'justinmk/vim-sneak'
@@ -84,7 +85,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	nmap <silent> <c-f> :Files<CR>
 	nmap <silent> <c-p> :Ag<CR>
 
-	"UI Plugins
+	" UI Plugins
 	
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
@@ -94,7 +95,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'mkitt/tabline.vim'
 	Plug 'romainl/vim-cool'
 
-	"Editor plugins
+	" Editor plugins
 	
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'itchyny/vim-cursorword'
@@ -109,14 +110,24 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'szw/vim-tags'
 	nmap <silent> <Leader>r :TagsGenerate!<CR>
 
-	"Other
+	" Docker
 
 	Plug 'ekalinin/Dockerfile.vim'
-	Plug 'vim-scripts/ruscmd'
+
+	" Latex
 
 	Plug 'lervag/vimtex'
 	let g:tex_flavor = 'latex'
 	let g:vimtex_view_method='mupdf'
+
+	" Snippets
+
+	Plug 'SirVer/ultisnips'
+	let g:UltiSnipsExpandTrigger = '<tab>'
+	let g:UltiSnipsJumpForwardTrigger = '<tab>'
+	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'	
+
+	Plug 'honza/vim-snippets'
 
 call plug#end()
 
