@@ -59,14 +59,14 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	"Navigation Plugins
 
-    Plug 'kshenoy/vim-signature'
+	Plug 'kshenoy/vim-signature'
 	Plug 'jeetsukumaran/vim-buffergator'
 	
-    Plug 'preservim/nerdtree'
+	Plug 'preservim/nerdtree'
 	nmap <silent> T :NERDTree<CR>
 	nmap <silent> <Leader>f :NERDTreeFind<CR>
 
-    Plug 'easymotion/vim-easymotion'
+	Plug 'easymotion/vim-easymotion'
 	map  / <Plug>(easymotion-sn)zz
 	omap / <Plug>(easymotion-tn)zz
 	map  n <Plug>(easymotion-next)zz
@@ -78,8 +78,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	map f <Plug>Sneak_s
 	map F <Plug>Sneak_S
 
-    Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-    Plug 'junegunn/fzf.vim'
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
 	nmap <silent> t :FZF<CR>
 	nmap <silent> <c-f> :Files<CR>
 	nmap <silent> <c-p> :Ag<CR>
@@ -87,31 +87,31 @@ call plug#begin('~/.local/share/nvim/plugged')
 	"UI Plugins
 	
 	Plug 'arcticicestudio/nord-vim'
-    Plug 'vim-airline/vim-airline'
-    Plug 'vim-airline/vim-airline-themes'
-    Plug 'ryanoasis/vim-devicons'
-    Plug 'wincent/terminus'
-    Plug 'mkitt/tabline.vim'
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'ryanoasis/vim-devicons'
+	Plug 'wincent/terminus'
+	Plug 'mkitt/tabline.vim'
 	Plug 'romainl/vim-cool'
 
 	"Editor plugins
 	
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'itchyny/vim-cursorword'
-    Plug 'tpope/vim-surround'
+	Plug 'jiangmiao/auto-pairs'
+	Plug 'itchyny/vim-cursorword'
+	Plug 'tpope/vim-surround'
 	Plug 'wellle/vim-repeat'
-    Plug 'tpope/vim-commentary'
+	Plug 'tpope/vim-commentary'
 	Plug 'ervandew/supertab'
 
-    Plug 'vim-scripts/vim-auto-save'
+	Plug 'vim-scripts/vim-auto-save'
 	let g:auto_save = 1
 
-    Plug 'szw/vim-tags'
+	Plug 'szw/vim-tags'
 	nmap <silent> <Leader>r :TagsGenerate!<CR>
 
 	"Other
 
-    Plug 'ekalinin/Dockerfile.vim'
+	Plug 'ekalinin/Dockerfile.vim'
 	Plug 'vim-scripts/ruscmd'
 
 	Plug 'lervag/vimtex'
@@ -122,15 +122,15 @@ call plug#end()
 
 if has('syntax')
 	set bg=dark
-    syntax enable
+	syntax enable
 	colorscheme nord
 endif
 
 if exists('+termguicolors')
-    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-    set termguicolors
- 	set t_Co=256
+	let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+	let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+	set termguicolors
+	set t_Co=256
 endif
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
