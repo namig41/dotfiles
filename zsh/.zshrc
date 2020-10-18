@@ -9,14 +9,6 @@ export TERM="xterm-256color"
 # load a random theme each time oh-my-zsh is loaded, in which case, # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
-# ZSH_THEME="powerlevel9k/powerlevel9k"
-# 
-# POWERLEVEL9K_MODE="nerdfont-complete"
-# POWERLEVEL9K_DISABLE_RPRMOPT=true
-# POWERLEVEL9K_PROMPT_ON_NEWLINE=true
-# POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="➤ "
-# POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX=""
-
 ZSH_THEME="arrow/arrow"
 ZSH_THEME_VIRTUALENV_PREFIX='('
 ZSH_THEME_VIRTUALENV_SUFFIX=')'
@@ -147,12 +139,16 @@ compctl -K _pip_completion pip3
 ch () { chmod +x $*;}
 qt () { qtcreator $* &;}
 n () { nautilus $* > /dev/null 2>&1 &;}
+c () { cd "$@" && ls -al; }
 
+alias e="/usr/bin/vim"
+alias vim="/usr/bin/nvim"
 
-alias zshc="vim ~/.zshrc"
+alias zshc="nvim ~/.zshrc"
 alias zshr="source ~/.zshrc"
 
-alias vimc="vim ~/.vimrc"
+alias vimc="nvim ~/.vimrc"
+alias nvimc="nvim /home/namig/.config/nvim/init.vim"
 
 alias m="make > /dev/null 2>&1 &"
 alias mr="make re"
