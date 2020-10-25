@@ -1,4 +1,5 @@
 set number
+set scrolloff=999
 set mouse=a
 set autoread
 set backspace=indent,eol,start
@@ -55,9 +56,11 @@ nmap H gb
 nnoremap <silent> <Leader>o o<Esc>k
 nnoremap <silent> <Leader>O O<Esc>j
 
+map <silent> <Leader>v :source ~/.vimrc<CR>
+
 call plug#begin('~/.local/share/nvim/plugged')
 
-	" Navigation Plugins
+	" Navigation plugins
 
 	Plug 'kshenoy/vim-signature'
 	Plug 'jeetsukumaran/vim-buffergator'
@@ -85,8 +88,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	nmap <silent> <c-f> :Files<CR>
 	nmap <silent> <c-p> :Ag<CR>
 
-	" UI Plugins
+	" UI plugins
 	
+	Plug 'morhetz/gruvbox'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
@@ -98,6 +102,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" Editor plugins
 	
 	Plug 'jiangmiao/auto-pairs'
+	Plug 'editorconfig/editorconfig-vim'
 	Plug 'itchyny/vim-cursorword'
 	Plug 'tpope/vim-surround'
 	Plug 'wellle/vim-repeat'
@@ -114,11 +119,19 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'ekalinin/Dockerfile.vim'
 
-	" Latex
+	" Latex plugins
 
 	Plug 'lervag/vimtex'
-	let g:tex_flavor = 'latex'
+	let g:tex_flavor='latex'
 	let g:vimtex_view_method='mupdf'
+	let g:vimtex_quickfix_mode=0
+
+	Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+	let g:livepreview_previewer = 'mupdf'
+
+	Plug 'KeitaNakamura/tex-conceal.vim'
+    set conceallevel=1
+    let g:tex_conceal='abdmg'
 
 	" Snippets
 
@@ -145,4 +158,7 @@ if exists('+termguicolors')
 endif
 
 autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-autocmd VimLeave * silent exec "! echo -ne '\e[1 q'" 
+autocmd VimLeave * silent exec "! echo -ne '\e[1 q'"
+
+hi clear Conceal
+
