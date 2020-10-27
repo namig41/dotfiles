@@ -171,6 +171,8 @@ alias google="google-chrome > /dev/null 2>&1 &"
 alias v="valgrind"
 alias vf="valgrind --leak-check=full"
 
+alias mat="matlab -nodesktop"
+
 export LANG=en_US.utf8
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

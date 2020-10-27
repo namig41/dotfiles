@@ -1,5 +1,4 @@
 set number
-set scrolloff=999
 set mouse=a
 set autoread
 set backspace=indent,eol,start
@@ -56,8 +55,6 @@ nmap H gb
 nnoremap <silent> <Leader>o o<Esc>k
 nnoremap <silent> <Leader>O O<Esc>j
 
-map <silent> <Leader>v :source ~/.vimrc<CR>
-
 call plug#begin('~/.local/share/nvim/plugged')
 
 	" Navigation plugins
@@ -87,6 +84,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	nmap <silent> t :FZF<CR>
 	nmap <silent> <c-f> :Files<CR>
 	nmap <silent> <c-p> :Ag<CR>
+	nmap <silent> <c-b> :Buffers<CR>
 
 	" UI plugins
 	
@@ -141,6 +139,10 @@ call plug#begin('~/.local/share/nvim/plugged')
 	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'	
 
 	Plug 'honza/vim-snippets'
+
+	" Matlab
+	
+	Plug 'vim-scripts/MatlabFilesEdition'
 
 call plug#end()
 
