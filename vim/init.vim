@@ -10,15 +10,16 @@ set ignorecase
 set tabstop=4
 set shiftwidth=4
 set smartcase
-set smartindent
 set smarttab
 set showmatch
 set hlsearch
 set incsearch
 set cindent
-set visualbell
+set noerrorbells
 set noswapfile
 set ruler
+set cursorline
+set nocompatible
 
 if has('autocmd')
     filetype on
@@ -35,22 +36,24 @@ vnoremap <C-d> "+d
 imap jk <Esc>
 vmap aa <Esc>
 
-nmap K gt
-nmap J gT
+map <silent> <C-h> <C-w>h
+map <silent> <C-j> <C-w>j
+map <silent> <C-k> <C-w>k
+map <silent> <C-l> <C-w>l
 
-nmap <c-h> <c-w>h
-nmap <c-l> <c-w>l
+map J <c-d>
+map K <c-u>
 
-map <c-j> <c-d>
-map <c-k> <c-u>
+vmap            <Tab>       >
+vmap            <S-Tab>     <
+vnoremap        <           <gv
+vnoremap        >           >gv
 
 map <Leader>a $
 map <Leader>i ^
 
 map Q :wq<CR>
 map <Leader>q :q!<CR>
-
-nmap H gb
 
 nnoremap <silent> <Leader>o o<Esc>k
 nnoremap <silent> <Leader>O O<Esc>j
@@ -82,9 +85,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
 	nmap <silent> t :FZF<CR>
-	nmap <silent> <c-f> :Files<CR>
-	nmap <silent> <c-p> :Ag<CR>
-	nmap <silent> <c-b> :Buffers<CR>
+	nmap <silent> <C-f> :Files<CR>
+	nmap <silent> <C-p> :Ag<CR>
+	nmap <silent> <C-b> :Buffers<CR>
 
 	" UI plugins
 	
@@ -106,6 +109,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'wellle/vim-repeat'
 	Plug 'tpope/vim-commentary'
 	Plug 'ervandew/supertab'
+	Plug 'sheerun/vim-polyglot'
+
+	Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-comleter'}
+	let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+	let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+	let g:SuperTabDefaultCompletionType = '<C-j>'
 
 	Plug 'vim-scripts/vim-auto-save'
 	let g:auto_save = 1
@@ -133,12 +142,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" Snippets
 
-	Plug 'SirVer/ultisnips'
-	let g:UltiSnipsExpandTrigger = '<tab>'
-	let g:UltiSnipsJumpForwardTrigger = '<tab>'
-	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'	
-
 	Plug 'honza/vim-snippets'
+
+	Plug 'SirVer/ultisnips'
+	let g:UltiSnipsExpandTrigger = "<tab>"
+	let g:UltiSnipsJumpForwardTrigger = "<tab>"
+	let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 	" Matlab
 	
@@ -163,4 +172,3 @@ autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
 autocmd VimLeave * silent exec "! echo -ne '\e[1 q'"
 
 hi clear Conceal
-
