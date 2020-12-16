@@ -19,7 +19,6 @@ set noerrorbells
 set noswapfile
 set ruler
 set cursorline
-set nocompatible
 
 if has('autocmd')
     filetype on
@@ -44,10 +43,10 @@ map <silent> <C-l> <C-w>l
 map J <c-d>
 map K <c-u>
 
-vmap            <Tab>       >
-vmap            <S-Tab>     <
-vnoremap        <           <gv
-vnoremap        >           >gv
+vmap <Tab>   >
+vmap <S-Tab> < 
+vnoremap <   <gv
+vnoremap >   >gv
 
 map <Leader>a $
 map <Leader>i ^
@@ -109,7 +108,8 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'wellle/vim-repeat'
 	Plug 'tpope/vim-commentary'
 	Plug 'ervandew/supertab'
-	Plug 'sheerun/vim-polyglot'
+	Plug 'terryma/vim-multiple-cursors'
+	Plug 'terryma/vim-expand-region'
 
 	Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-comleter'}
 	let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
