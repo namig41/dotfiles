@@ -32,6 +32,8 @@ inoremap <C-v> <ESC>"+pa
 vnoremap <C-c> "+y
 vnoremap <C-d> "+d
 
+imap <Leader>d <Esc>o
+
 imap jk <Esc>
 vmap aa <Esc>
 
@@ -39,6 +41,7 @@ map <silent> <C-h> <C-w>h
 map <silent> <C-j> <C-w>j
 map <silent> <C-k> <C-w>k
 map <silent> <C-l> <C-w>l
+
 
 map J <c-d>
 map K <c-u>
@@ -50,6 +53,8 @@ vnoremap >   >gv
 
 map <Leader>a $
 map <Leader>i ^
+
+map <Leader>s <Esc>ggVG<CR>
 
 map Q :wq<CR>
 map <Leader>q :q!<CR>
@@ -90,7 +95,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" UI plugins
 	
-	Plug 'morhetz/gruvbox'
+	Plug 'bfrg/vim-cpp-modern'
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
@@ -111,10 +116,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'terryma/vim-expand-region'
 
-	Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clangd-comleter'}
+	Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-comleter'}
 	let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 	let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-	let g:SuperTabDefaultCompletionType = '<C-j>'
+	let g:SuperTabDefaultCompletionType = '<C-n>'
+	let g:ycm_autoclose_preview_window_after_completion = 1
+	let g:ycm_global_ycm_extra_conf = "/home/namig/.local/share/nvim/plugged/YouCompleteMe/.ycm_extra_conf.py"
 
 	Plug 'vim-scripts/vim-auto-save'
 	let g:auto_save = 1
@@ -152,6 +159,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" Matlab
 	
 	Plug 'vim-scripts/MatlabFilesEdition'
+
 
 call plug#end()
 

@@ -5,3 +5,11 @@ obj/*
 *.a
 .DS_Store
 .*.dSYM/*
+
+*.cflags
+*.config
+*.creator
+*.creator.user
+*.cxxflags
+*.files
+*.includes
