@@ -1,0 +1,28 @@
+#! /usr/bin/bash
+
+debugFunction="var_dump\|echo"
+result=0
+
+for file in $(git diff --cached --name-only)
+do
+	if [[ -f $file ]]; then
+		if [[ "$file" =~ ^.+(php)$ ]]; then
+			searchFlag=$(grep -i -m 1 "$debugFunction" "$file");
+			if [[ ! -z $searchFlag ]]; then
+				echo "$file contains denied word: $searchFlag" >&2;
+				result=1;
+			fi
+			saveError=$(php -l "$file");
+            if [ $? -ne 0 ]; then
+				echo $saveError >&2;
+                result=1;
+			fi
+		fi
+	fi
+done
+
+if [ $result -ne 0 ]; then
+    echo -e "\e[1;31mAborting commit\e[0m"
+    exit $result
+fi
+
