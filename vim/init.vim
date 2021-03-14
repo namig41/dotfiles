@@ -1,29 +1,41 @@
 set number
+set cursorline
+set ruler
+
 set mouse=a
 set autoread
 set backspace=indent,eol,start
 set encoding=utf-8
 set clipboard=unnamed
+set noerrorbells
 set wrap
-set autoindent
+
 set ignorecase
-set tabstop=4
-set shiftwidth=4
 set smartcase
-set smarttab
+
 set showmatch
 set hlsearch
 set incsearch
+
 set cindent
-set noerrorbells
+set autoindent
+
+set noexpandtab
+set shiftround
+set shiftwidth=4
+set smarttab
+set softtabstop=4
+set tabstop=4
+
+set nobackup
 set noswapfile
-set ruler
-set cursorline
+set noundofile
+set nowritebackup
 
 if has('autocmd')
-    filetype on
-    filetype plugin on
-    filetype indent on
+	filetype on
+	filetype plugin on
+	filetype indent on
 endif
 
 let g:mapleader=','
@@ -32,7 +44,7 @@ inoremap <C-v> <ESC>"+pa
 vnoremap <C-c> "+y
 vnoremap <C-d> "+d
 
-imap <Leader>d <Esc>o
+imap <Leader>o <Esc>o
 
 imap jk <Esc>
 vmap aa <Esc>
@@ -41,7 +53,6 @@ map <silent> <C-h> <C-w>h
 map <silent> <C-j> <C-w>j
 map <silent> <C-k> <C-w>k
 map <silent> <C-l> <C-w>l
-
 
 map J <c-d>
 map K <c-u>
@@ -54,19 +65,19 @@ vnoremap >   >gv
 map <Leader>a $
 map <Leader>i ^
 
-map <Leader>s <Esc>ggVG<CR>
+map <Leader>v <Esc>ggVG<CR>
 
 map Q :wq<CR>
 map <Leader>q :q!<CR>
-
-nnoremap <silent> <Leader>o o<Esc>k
-nnoremap <silent> <Leader>O O<Esc>j
 
 call plug#begin('~/.local/share/nvim/plugged')
 
 	" Navigation plugins
 
 	Plug 'kshenoy/vim-signature'
+	nmap mn ]'
+	nmap mN ['
+
 	Plug 'jeetsukumaran/vim-buffergator'
 	Plug 'vim-scripts/ruscmd'
 	
@@ -88,7 +99,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	nmap <silent> t :FZF<CR>
+	" nmap <silent> <C-k> :FZF<CR>
 	nmap <silent> <C-f> :Files<CR>
 	nmap <silent> <C-p> :Ag<CR>
 	nmap <silent> <C-b> :Buffers<CR>
@@ -106,6 +117,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" Editor plugins
 	
+	Plug 'kqito/vim-easy-replace'
+	let g:easy_replace_highlight_guibg='gray'
+
 	Plug 'jiangmiao/auto-pairs'
 	Plug 'editorconfig/editorconfig-vim'
 	Plug 'itchyny/vim-cursorword'
@@ -149,7 +163,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	" Snippets
 
-	Plug 'honza/vim-snippets'
+	Plug 'honza/vim-snippets', { 'for': 'tex' }
 
 	Plug 'SirVer/ultisnips'
 	let g:UltiSnipsExpandTrigger = "<tab>"
@@ -159,7 +173,6 @@ call plug#begin('~/.local/share/nvim/plugged')
 	" Matlab
 	
 	Plug 'vim-scripts/MatlabFilesEdition'
-
 
 call plug#end()
 
@@ -176,7 +189,10 @@ if exists('+termguicolors')
 	set t_Co=256
 endif
 
-autocmd VimEnter * silent exec "! echo -ne '\e[1 q'"
-autocmd VimLeave * silent exec "! echo -ne '\e[1 q'"
+augroup RestoreCursorShapeOnExit
+    autocmd!
+    autocmd VimLeave * set guicursor=a:hor20
+augroup END
 
 hi clear Conceal
+
