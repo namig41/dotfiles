@@ -1,3 +1,12 @@
+if has('autocmd')
+	filetype on
+	filetype plugin on
+	filetype indent on
+endif
+
+set path+=/path
+set colorcolumn=80
+
 set number
 set cursorline
 set ruler
@@ -17,8 +26,8 @@ set showmatch
 set hlsearch
 set incsearch
 
+set ai
 set cindent
-set autoindent
 
 set noexpandtab
 set shiftround
@@ -31,12 +40,6 @@ set nobackup
 set noswapfile
 set noundofile
 set nowritebackup
-
-if has('autocmd')
-	filetype on
-	filetype plugin on
-	filetype indent on
-endif
 
 let g:mapleader=','
 
@@ -70,13 +73,15 @@ map <Leader>v <Esc>ggVG<CR>
 map Q :wq<CR>
 map <Leader>q :q!<CR>
 
+nmap <Leader>t :tabnew<CR>
+nnoremap H :tabprevious<CR>
+nnoremap L :tabnext<CR>
+
 call plug#begin('~/.local/share/nvim/plugged')
 
 	" Navigation plugins
 
 	Plug 'kshenoy/vim-signature'
-	nmap mn ]'
-	nmap mN ['
 
 	Plug 'jeetsukumaran/vim-buffergator'
 	Plug 'vim-scripts/ruscmd'
@@ -99,14 +104,18 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 	Plug 'junegunn/fzf.vim'
-	" nmap <silent> <C-k> :FZF<CR>
 	nmap <silent> <C-f> :Files<CR>
+	" nmap <silent> <C-f> :FZF<CR>
 	nmap <silent> <C-p> :Ag<CR>
 	nmap <silent> <C-b> :Buffers<CR>
 
 	" UI plugins
 	
 	Plug 'bfrg/vim-cpp-modern'
+	let g:cpp_attributes_highlight = 1
+	let g:cpp_member_highlight = 1
+	let g:cpp_simple_highlight = 1
+
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
@@ -114,6 +123,9 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'wincent/terminus'
 	Plug 'mkitt/tabline.vim'
 	Plug 'romainl/vim-cool'
+	Plug 'pbondoer/vim-42header'
+	Plug '907th/vim-auto-save'
+	let g:auto_save = 1
 
 	" Editor plugins
 	
@@ -130,15 +142,12 @@ call plug#begin('~/.local/share/nvim/plugged')
 	Plug 'terryma/vim-multiple-cursors'
 	Plug 'terryma/vim-expand-region'
 
-	Plug 'ycm-core/YouCompleteMe', {'do': './install.py --clang-comleter'}
+	Plug 'ycm-core/YouCompleteMe', {'do': 'python3 install.py --clangd-completer --java-complete'}
 	let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 	let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 	let g:SuperTabDefaultCompletionType = '<C-n>'
 	let g:ycm_autoclose_preview_window_after_completion = 1
-	let g:ycm_global_ycm_extra_conf = "/home/namig/.local/share/nvim/plugged/YouCompleteMe/.ycm_extra_conf.py"
-
-	Plug 'vim-scripts/vim-auto-save'
-	let g:auto_save = 1
+	let g:ycm_global_ycm_extra_conf = "/home/namig/Source/httpd/.ycm_extra_conf.py"
 
 	Plug 'szw/vim-tags'
 	nmap <silent> <Leader>r :TagsGenerate!<CR>
@@ -165,7 +174,7 @@ call plug#begin('~/.local/share/nvim/plugged')
 
 	Plug 'honza/vim-snippets', { 'for': 'tex' }
 
-	Plug 'SirVer/ultisnips'
+	Plug 'SirVer/ultisnips', {'for': 'tex'}
 	let g:UltiSnipsExpandTrigger = "<tab>"
 	let g:UltiSnipsJumpForwardTrigger = "<tab>"
 	let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
@@ -195,4 +204,3 @@ augroup RestoreCursorShapeOnExit
 augroup END
 
 hi clear Conceal
-

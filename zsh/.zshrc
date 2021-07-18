@@ -6,16 +6,16 @@ export ZSH="/home/namig/.oh-my-zsh"
 export TERM="xterm-256color"
 
 # Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case, # to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 ZSH_THEME="arrow/arrow"
 ZSH_THEME_VIRTUALENV_PREFIX='('
 ZSH_THEME_VIRTUALENV_SUFFIX=')'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# a theme from this variable instead of looking in $ZSH/themes/
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
@@ -30,9 +30,16 @@ ZSH_THEME_VIRTUALENV_SUFFIX=')'
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true" # Uncomment the following line to change how often to auto-update (in days). 
-# # export UPDATE_ZSH_DAYS=13 # Uncomment the following line if pasting URLs and other text is messed up.  # DISABLE_MAGIC_FUNCTIONS=true # Uncomment the following line to disable colors in ls.
-#DISABLE_LS_COLORS="true"
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS="true"
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
 # DISABLE_AUTO_TITLE="true"
@@ -60,8 +67,8 @@ ZSH_THEME_VIRTUALENV_SUFFIX=')'
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
 # Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Standard plugins can be found in $ZSH/plugins/
+# Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 #
@@ -75,13 +82,13 @@ plugins=(
 	alias-finder
 	autojump
 	vi-mode
-	vscode
 	fzf
 	docker
 	docker-compose
 	systemd
 	virtualenv
 	pip
+	vscode
 )
 
 # User configuration
@@ -89,7 +96,8 @@ source $ZSH/oh-my-zsh.sh
 
 bindkey '^ ' autosuggest-accept
 
-LS_COLORS="di=36:*.o=35:ex=32:*.a=31:*.pdf=35:*.c=04;36"  
+LS_COLORS='*.php=33:*.o=35:*.cpp=04;36:*.c=04;36:no=00:rs=0:fi=00:di=01;34:ln=36:mh=04;36:pi=04;01;36:so=04;33:do=04;01;36:bd=01;33:cd=33:or=31:mi=01;37;41:ex=01;36:su=01;04;37:sg=01;04;37:ca=01;37:tw=01;37;44:ow=01;04;34:st=04;37;44:*.7z=01;32:*.ace=01;32:*.alz=01;32:*.arc=01;32:*.arj=01;32:*.bz=01;32:*.bz2=01;32:*.cab=01;32:*.cpio=01;32:*.deb=01;32:*.dz=01;32:*.ear=01;32:*.gz=01;32:*.jar=01;32:*.lha=01;32:*.lrz=01;32:*.lz=01;32:*.lz4=01;32:*.lzh=01;32:*.lzma=01;32:*.lzo=01;32:*.rar=01;32:*.rpm=01;32:*.rz=01;32:*.sar=01;32:*.t7z=01;32:*.tar=01;32:*.taz=01;32:*.tbz=01;32:*.tbz2=01;32:*.tgz=01;32:*.tlz=01;32:*.txz=01;32:*.tz=01;32:*.tzo=01;32:*.tzst=01;32:*.war=01;32:*.xz=01;32:*.z=01;32:*.Z=01;32:*.zip=01;32:*.zoo=01;32:*.zst=01;32:*.aac=32:*.au=32:*.flac=32:*.m4a=32:*.mid=32:*.midi=32:*.mka=32:*.mp3=32:*.mpa=32:*.mpeg=32:*.mpg=32:*.ogg=32:*.opus=32:*.ra=32:*.wav=32:*.3des=01;35:*.aes=01;35:*.gpg=01;35:*.pgp=01;35:*.doc=32:*.docx=32:*.dot=32:*.odg=32:*.odp=32:*.ods=32:*.odt=32:*.otg=32:*.otp=32:*.ots=32:*.ott=32:*.pdf=32:*.ppt=32:*.pptx=32:*.xls=32:*.xlsx=32:*.app=01;36:*.bat=01;36:*.btm=01;36:*.cmd=01;36:*.com=01;36:*.exe=01;36:*.reg=01;36:*~=02;37:*.bak=02;37:*.BAK=02;37:*.log=02;37:*.log=02;37:*.old=02;37:*.OLD=02;37:*.orig=02;37:*.ORIG=02;37:*.swo=02;37:*.swp=02;37:*.bmp=32:*.cgm=32:*.dl=32:*.dvi=32:*.emf=32:*.eps=32:*.gif=32:*.jpeg=32:*.jpg=32:*.JPG=32:*.mng=32:*.pbm=32:*.pcx=32:*.pgm=32:*.png=32:*.PNG=32:*.ppm=32:*.pps=32:*.ppsx=32:*.ps=32:*.svg=32:*.svgz=32:*.tga=32:*.tif=32:*.tiff=32:*.xbm=32:*.xcf=32:*.xpm=32:*.xwd=32:*.xwd=32:*.yuv=32:*.anx=32:*.asf=32:*.avi=32:*.axv=32:*.flc=32:*.fli=32:*.flv=32:*.gl=32:*.m2v=32:*.m4v=32:*.mkv=32:*.mov=32:*.MOV=32:*.mp4=32:*.mpeg=32:*.mpg=32:*.nuv=32:*.ogm=32:*.ogv=32:*.ogx=32:*.qt=32:*.rm=32:*.rmvb=32:*.swf=32:*.vob=32:*.webm=32:*.wmv=32:';
+export LS_COLORS
 
 
 function zle-line-init zle-keymap-select {
@@ -136,10 +144,25 @@ compctl -K _pip_completion pip3
 # For a full list of active aliases, run `alias`.
 #
 
-ch () { chmod +x $*;}
-qt () { qtcreator $* &;}
-n () { nautilus $* > /dev/null 2>&1 &;}
-c () { cd "$@" && ls -al; }
+_systemctl_unit_state() {
+  typeset -gA _sys_unit_state
+  _sys_unit_state=( $(__systemctl list-unit-files "$PREFIX*" | awk '{print $1, $2}') )
+}
+
+ch () { 
+	chmod +x $*;
+}
+
+qt () { 
+	qtcreator $* &;
+}
+
+n () { 
+	nautilus $* > /dev/null 2>&1 &;
+}
+cc () { 
+	cd "$@" && clear && ls -al; 
+}
 
 alias e="/usr/bin/vim"
 alias vim="/usr/bin/nvim"
@@ -147,8 +170,9 @@ alias vim="/usr/bin/nvim"
 alias zshc="nvim ~/.zshrc"
 alias zshr="source ~/.zshrc"
 
-alias vimc="nvim ~/.vimrc"
-alias nvimc="nvim /home/namig/.config/nvim/init.vim"
+alias gitc="nvim ~/.gitignore_global"
+
+alias vimc="nvim /home/namig/.config/nvim/init.vim"
 
 alias m="make > /dev/null 2>&1 &"
 alias mr="make re"
@@ -174,5 +198,13 @@ alias vf="valgrind --leak-check=full"
 alias mat="matlab -nodesktop"
 
 export LANG=en_US.utf8
+
+if type ag &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='ag -p ~/.gitignore -g ""'
+fi
+
+if type rg &> /dev/null; then
+    export FZF_DEFAULT_COMMAND='rg --files --hidden'
+fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
