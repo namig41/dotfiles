@@ -51,7 +51,7 @@ sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
 sudo apt-get install -f -y
 
 echo 'Installing Gnome-Tweaks'
-sudo apt install gnome-tweaks -t
+sudo apt install gnome-tweaks -y
 
 sudo apt install fonts-powerline -y
 sudo add-apt-repository ppa:numix/ppa
@@ -92,5 +92,7 @@ cp -f $DOTFILES_PATH/git/.gitignore_global $HOME
 
 cp -f $DOTFILES_PATH/arrow/arrow.zsh-theme $HOME/.oh-my-zsh/themes/
 cp -f $DOTFILES_PATH/zsh/.zshrc $HOME
+
+cd ~ && sudo apt update && sudo apt upgrade -y
 
 chsh -s $(which zsh)
