@@ -29,7 +29,7 @@ sudo apt install jupyter-notebook -y
 echo 'Installing ZSH'
 sudo apt-get install zsh -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-chsh -s $(which zsh)
+
 
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
@@ -70,8 +70,8 @@ sudo apt-get install vlc -y
 sudo apt-get install vlc-plugin-access-extra libbluray-bdj libdvdcss2 -y
 
 echo 'Cloning your dotfiles'
-git clone https://github.com/namig41/dotfiles.git /tmp/
-DOTFILES_PATH=/tmp/dotfiles/
+DOTFILES_PATH=/tmp/dotfiles
+git clone https://github.com/namig41/dotfiles.git $DOTFILES_PATH
 
 cp -f $DOTFILES_PATH/vim/.vim.min $HOME/.vimrc
 
@@ -84,6 +84,7 @@ cp -f $DOTFILES_PATH/git/.gitignore $HOME
 cp -f $DOTFILES_PATH/arrow/arrow.zsh-theme $HOME/.oh-my-zsh/themes/
 cp -f $DOTFILES_PATH/zsh/.zshrc $HOME
 
+chsh -s $(which zsh) &
 
 echo "   _    _ _            _                              _             _"
 echo "  / \  | | |  ___  ___| |_ _   _ _ __      ___ _ __  (_) ___  _   _| |"
