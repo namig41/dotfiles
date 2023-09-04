@@ -6,10 +6,7 @@ echo "| |_| |/ _ \ | |/ _ \ "
 echo "|  _  |  __/ | | (_) |"
 echo "|_| |_|\___|_|_|\___/ "
 
-
-echo "Welcome! Let's start setting up your system."
-
-cd ~ && sudo apt update && sudo apt upgrade
+cd ~ && sudo apt update && sudo apt upgrade -y
 
 sudo apt install curl neofetch wget vim xclip -y
 
@@ -49,6 +46,21 @@ code --install-extension Shan.code-settings-sync
 sudo apt-get install gnome-keyring -y
 cls
 
+echo 'Installing Google Chrome'
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo dpkg -i --force-depends google-chrome-stable_current_amd64.deb
+sudo apt-get install -f -y
+cls
+
+echo 'Installing Gnome-Tweaks'
+sudo apt install gnome-tweaks -t
+cls
+
+sudo apt install fonts-powerline -y
+sudo add-apt-repository ppa:numix/ppa
+sudo apt-get update
+sudo apt-get install numix-gtk-theme numix-icon-theme-circle numix-icon-theme-square -y
+
 echo 'Installing Docker'
 sudo apt-get purge docker docker-engine docker.io
 sudo apt-get install docker.io -y
@@ -73,22 +85,15 @@ echo 'Cloning your dotfiles'
 DOTFILES_PATH=/tmp/dotfiles
 git clone https://github.com/namig41/dotfiles.git $DOTFILES_PATH
 
-cp -f $DOTFILES_PATH/vim/.vim.min $HOME/.vimrc
+cp -f $DOTFILES_PATH/vim/.vimrc.min $HOME/.vimrc
 
 cp -f $DOTFILES_PATH/tmux/.tmux.conf $HOME
 
 cp -f $DOTFILES_PATH/git/.gitconfig $HOME
-cp -f $DOTFILES_PATH/git/.gitignore $HOME
+cp -f $DOTFILES_PATH/git/.gitignore_global $HOME
 
 
 cp -f $DOTFILES_PATH/arrow/arrow.zsh-theme $HOME/.oh-my-zsh/themes/
 cp -f $DOTFILES_PATH/zsh/.zshrc $HOME
 
-chsh -s $(which zsh) &
-
-echo "   _    _ _            _                              _             _"
-echo "  / \  | | |  ___  ___| |_ _   _ _ __      ___ _ __  (_) ___  _   _| |"
-echo " / _ \ | | | / __|/ _ \ __| | | | '_ \    / _ \ '_ \ | |/ _ \| | | | |"
-echo "/ ___ \| | | \__ \  __/ |_| |_| | |_) |  |  __/ | | || | (_) | |_| |_|"
-echo "/_/   \_\_|_| |___/\___|\__|\__,_| .__( )  \___|_| |_|/ |\___/ \__, (_)"
-echo "                                 |_|  |/            |__/       |___/"
+chsh -s $(which zsh)
