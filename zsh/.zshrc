@@ -164,20 +164,13 @@ cc () {
 	cd "$@" && clear && ls -al; 
 }
 
-alias e="/usr/bin/vim"
-alias vim="/usr/bin/nvim"
 
-alias zshc="nvim ~/.zshrc"
+alias zshc="vim ~/.zshrc"
 alias zshr="source ~/.zshrc"
 
-alias gitc="nvim ~/.gitignore_global"
+alias gitc="vim ~/.gitignore_global"
 
-alias vimc="nvim /home/namig/.config/nvim/init.vim"
-
-alias m="make > /dev/null 2>&1 &"
-alias mr="make re"
-alias mcl="make clean"
-alias mf="make fclean"
+alias vimc="vim /home/namig/.vimrc"
 
 alias rmf="rm -rf"
 
@@ -187,15 +180,12 @@ alias gmc='git commit -am "$(curl -s whatthecommit.com/index.txt)" && git push'
 alias -1="cd ../"
 alias -2="cd ../../"
 
-alias open="xdg-open "
+alias open="xdg-open"
 
 alias jp="jupyter notebook"
-alias google="google-chrome > /dev/null 2>&1 &"
 
 alias v="valgrind"
 alias vf="valgrind --leak-check=full"
-
-alias mat="matlab -nodesktop"
 
 export LANG=en_US.utf8
 
