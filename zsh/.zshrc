@@ -187,6 +187,8 @@ alias jp="jupyter notebook"
 alias v="valgrind"
 alias vf="valgrind --leak-check=full"
 
+alias lenv="set -o allexport && source .env && set +o allexport"
+
 export LANG=en_US.utf8
 
 if type ag &> /dev/null; then
